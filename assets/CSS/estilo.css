@@ -1,0 +1,432 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800&display=swap');
+
+body{
+    /* background-color: rgb(66, 65, 65);   */
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins';  
+}
+
+.login{
+    color: #694FA0;
+    font-size: 20px ;
+    font-style: normal;
+    font-weight: 800;
+}
+
+.btn{
+    margin-right: 30px;
+    margin-bottom: 20px;
+    margin-top: 40px;
+    background-color: #68519D;  
+}
+
+.btn-todos{
+background-color:rgb(155, 245, 155);
+}
+
+.result-avancado{
+    display: none;
+}
+
+.faixa-roxa{
+    background-color:#68519D;
+    width: 60px;
+    height: 100%;    
+    float: left;
+    border-right: 50px;
+    border-right: 10px solid #837a97;
+}
+
+.faixa-laranja{
+    position: absolute;
+    background-image: url(../imagens/Vector1.png);
+    width: 270px;
+    height: 100%;
+    background-repeat: no-repeat;  
+    background-position: right bottom;  
+    right: 1px;   
+}
+
+main{
+    position: relative;
+    background-color: white;
+    height: 900px;
+    width: 100%;       
+}
+
+header{
+    padding: 50px;
+    margin-left: 100px;
+}
+
+#sair{
+    display: none;    
+}
+
+.menus-logar{
+    cursor: pointer;
+}
+
+#logo_arnia{
+     width: 216px;
+     height: 64px;
+}
+
+.menu{
+    margin-left: 150px;
+    margin-top: 10px;    
+}
+
+#titulo{   
+    color: #68519D;   
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.novo-item{
+    border: 1px solid #68519D;
+    border-radius: 20px;
+    color: #694FA0;   
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    text-align: center;
+    width: 235px;
+    height: 36px;
+    right:  50px;
+    line-height: 30px;
+    margin-top: 20px;    
+}
+
+.novo-item:hover{
+ background-color: #68519D;
+ color: white;
+}
+
+.bloco-modal{    
+    position: fixed;                 
+    background-color: white;       
+    display: none;
+    background-color: rgba(0, 0, 0, 0.336) ;       
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0;  
+    padding-top: 40px;   
+}
+
+.bloco-modal-cadastro{
+    position: fixed;                 
+    background-color: white;       
+    display: none;
+    background-color: rgba(0, 0, 0, 0.336) ;       
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0;  
+    padding-top: 40px;   
+}
+
+.bloco-modal-login{
+    position: fixed;                 
+    background-color: white;       
+    display: block;
+    background-color: rgba(0, 0, 0, 0.336) ;       
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0;  
+    padding-top: 40px;  
+}
+
+.conteudo-modal{  
+    width: 40%;    
+    color: #68519D;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 30px;
+    background-color: white;
+    margin: 0 auto;
+    border-radius: 20px;
+}
+
+form{
+    padding: 30px;    
+}
+
+.conteudo-modal input{
+    border-radius: 10px;
+    width: 100%;
+    height: 45px;       
+}
+
+#labelData{
+    width: 100%;
+}
+
+#labelSelect{
+    width: 100%;
+}
+#inputData, #selectStatus{
+    width: 60%;
+    height: 50px;
+    border-radius: 10px;    
+}
+
+.botao-cancelar{
+    color: #828282;
+    text-decoration: none;
+    margin-left: 30px;   
+}
+
+p{
+   font-size: 11px;
+}
+
+#botao-modal{
+    padding-bottom: 30px;
+}
+
+#form-login{
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+#form-login input{
+width: 270px;
+}
+.btn-entrar{
+    margin-top: 0;
+    width: 150px;
+    margin-left: 200px;
+    
+}
+
+.editar-deletar{
+    margin: 4px;
+    text-decoration: none;
+}
+
+.salvar{
+    float: right;
+    margin-right: 30px;
+    border-radius: 10px;
+    border-color: #694FA0;
+    height: 35px;
+    width: 130px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #694FA0;     
+}
+
+#container-table{
+    overflow-x: auto;
+}
+
+#expandir-filtro{    
+    overflow-x: auto;
+}
+
+.expandir{
+    font-size: 22px;
+    font-weight: bold;
+    padding-top: 15px;
+}
+table{
+    border-collapse: collapse;
+    width: 80%;
+    margin-top: 50px;   
+}
+
+td, th{
+    text-align: left;
+    padding: 8px;    
+}
+
+.th-titulo {
+    cursor: pointer;
+}
+
+.pesquisa{
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.seta{
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.paginacao{
+    cursor: pointer;
+}
+
+tbody >tr:nth-child(odd){
+    background-color: #F5F5F5;
+}
+
+.vermelho{
+    color: #EB5757;
+}
+.verde{
+    color: #27AE60;
+}
+
+.laranja{
+    color:#F8B04E;
+}
+
+#proximo:hover{
+    background-color: #68519D;
+    color: white;
+   }
+
+#anterior:hover{
+background-color: #68519D;
+color: white;
+
+}
+
+@media screen and (max-width: 912px){
+    .faixa-laranja{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 416px){
+body{
+    height: 677px;
+}
+
+#sair{
+    margin-bottom: 20px;   
+}
+
+.editar-deletar{
+    padding-bottom: 10px;
+}   
+
+.faixa-roxa{
+    background-color:#68519D;
+    width: 25px;
+    height: 100%;    
+    float: left;
+    border-right: 20px;
+    border-right: 5px solid #837a97;
+}
+
+header{
+    margin: 0px; 
+    margin-left: 30px;   
+    padding: 0px;
+}
+
+.menu{
+  margin-left: 25px;
+  font-size: 12px;
+}
+
+#icone-gerenciador{
+    margin-left: 24px;
+}
+
+.novo-item{
+    margin: auto;
+    margin-bottom: 40px;
+    margin-top: 10px;
+    line-height: 55px;
+    height: 60px;
+    font-size: 17px;
+    margin-left: 50px;
+}
+
+.btn{
+    margin-right: 0px;
+    margin-left: 5px;
+    margin-bottom: 0px;
+    margin-top: 7px;
+    height: 40px;
+    line-height: 1px;
+}
+
+#form-login{
+    padding-bottom: 0;
+    
+}
+.btn-entrar{
+   margin-bottom: 12px;    
+   margin-left: 105px;
+}
+
+.pesquisa{
+    font-size: 17px;
+    margin-top: 5px;
+    margin-left: 5px;   
+}
+
+.expandir{
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 15px;
+}
+
+.pesquisa{
+  position: absolute;
+  left: 30px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 25px;
+}
+
+td, th{
+    text-align: left;
+    padding: 0px;
+    padding-left: 3px;    
+}
+
+.seta{    
+    margin-left: 5px; 
+    font-size: 40px;  
+}
+#FiltroNum{
+    width: 50px; 
+    height: 35px;  
+}
+
+#FiltroDesc{
+    width: 185px;
+    height: 35px;  
+}
+
+#FiltroDate{
+    width: 115px;
+    height: 35px; 
+}
+
+.seta-table{
+    display: none;
+}
+
+.container-table{
+    margin-left: 5px;
+    
+}
+table{
+    width: 100%;    
+}
+
+#grupo-avancar{
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.conteudo-modal{
+    width: 90%;
+}
+}

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciaor de Tarefas</title>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+   <link rel="stylesheet" href="assets/CSS/estilo.css">  
+</head>
+<body >   
+ <main>       
+    <div class="faixa-roxa"></div>  
+    <div class="faixa-laranja"></div>
+
+    <header>    
+        <div class="container login">
+          <div class="row">  
+                <div class="col-12 col-sm-5">
+                    <img id="logo_arnia" src="./assets/imagens/arnia.png" alt="Logo Arnia" title="Logo Arnia">      
+                </div>        
+                <div id="menu-entrar" class=" col-sm-3 p-1 menus-logar" onclick="abrirModalLogin()">Entrar</div> 
+                <div id="cadastrar" class=" col-sm-2 p-1 menus-logar" onclick="abrirModalCadastro()">Cadastrar </div>  
+                <div id="sair" class=" col-sm-1 p-1 menus-logar" onclick="logoff()"> Sair </div>     
+         </div>                     
+    </header>
+
+<div class="menu">
+        <img id="icone-gerenciador" src="./assets/imagens/ícone arnia.png" alt="icone" title="Icone">     
+        <span id="titulo">Gerenciador de Tarefas </span>     
+        <div class="novo-item" onclick="abrirModal()">+ Adicionar nova tarefa </div> 
+
+      <div class="filtro-rapido">
+            <button type="button" class="btn btn-secondary " data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover" onclick="hoje()">Hoje
+            </button>
+
+            <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Right popover" onclick="emAndamento()">Em Andamento
+            </button>
+
+            <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Bottom popover" onclick="concluido()">Concluida
+            </button>
+            
+            <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="Left popover" onclick="parada()">Parada
+            </button>
+            
+            <button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Left popover" onclick="atrasada()">Atrasada
+            </button>
+            
+            <button type="button" class="btn btn-secondary btn-todos" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Left popover" onclick="carregarTarefas()">Todos
+            </button>
+             
+     
+         <div class="filtro-avancado">
+            <h6 class="expandir" ><i class="fa-solid fa-magnifying-glass"></i> Expandir Filtro </h6>
+            <i id="seta-down" class="seta fa-solid fa-caret-down" onclick="abrirFiltro()"></i> 
+            <i id="seta-up" class="seta fa-solid fa-caret-up" onclick="recolherFiltro()" ></i>
+            
+            <div id="expandir-filtro" class="result-avancado">
+                <table>
+                    <thead id="titulo-table-pesquisa">
+                        <tr>
+                            <th>Número</th>
+                            <th>Descrição</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="input-filtro">
+                            <td> <input type="text" name="FiltroNum" id="FiltroNum" class="input-filtro">   </td>
+                            <td> <input type="text" name="FiltroDesc" id="FiltroDesc" class="input-filtro"> </td>
+                            <td> <input type="date" name="FiltroDate" id="FiltroDate" class="input-filtro"> </td>
+                            <td> <label  for="filtrar" onclick="filtrar()"><h6 class="pesquisa">Filtrar <i class="fa-solid fa-magnifying-glass"></i></h6 ></label> </td>
+                        </tr>
+                    </tbody>
+                </table>                   
+            </div> <!--End Expandir Filtro -->
+         </div> <!--End Filtro Avançado -->    
+     </div> <!--End Filtro Rápido -->
+
+      <!------------- MODAL TAREFAS ------------>
+
+   <div id="modal" class="bloco-modal">
+        <div class="conteudo-modal">                  
+            <form>
+                <div>
+                    <h4 > Adicionar nova tarefa </h4>
+                    <label for="inputNumero"> Número </label>
+                    <input type="number" name="inputNumero" id="inputNumero" onclick="validarCampo('inputNumero','obrigatorioNumero')">
+                    <p id="obrigatorioNumero"></p>
+                </div>                       
+                <div>
+                    <label for="inputDesc"> Descrição </label>
+                    <input type="text" name="inputDesc" id="inputDesc" onclick="validarCampo('inputDesc','obrigatorioDesc')">
+                    <p id="obrigatorioDesc"> </p>
+                </div>
+                <div>
+                    <label id="labelData" for="inputData"> Data </label> 
+                    <input type="date" name="inputData" id="inputData" onclick="validarCampo('inputData','obrigatorioData')">
+                    <p id="obrigatorioData"> </p>
+                </div>
+                <div>
+                    <label id="labelSelect" for="selectStatus"> Status </label>                          
+                    <select name="status" id="selectStatus" onclick="validarCampo('selectStatus','obrigatorioStatus')">
+                        <option value="" selected></option>
+                        <option value="Concluido">Concluidos</option>
+                        <option value="Em andamento" >Em andamento</option>
+                        <option value="Parada">Parada </option>
+                    </select>                        
+                        <p id="obrigatorioStatus"> </p>
+                </div>
+            </form>                                            
+                    <div id="botao-modal">
+                        <a class="botao-cancelar" href="#" onclick="fecharModal()"> Cancelar </a>
+                        <button class="salvar" onclick="salvarItem()"> Salvar </button>
+                    </div>                       
+       </div> <!-- End conteúdo modal -->
+    </div>    <!--End bloco modal-->
+
+    <!-- ----------------- MODAL CADASTRAR USUÁRIO---------- -->
+
+    <div id="modal2" class="bloco-modal-cadastro">
+        <div class="conteudo-modal">                  
+            <form>
+                <div>
+                    <h4> Cadastrar Usuário </h4>
+                    <label for="inputUser"> Usuário </label>
+                    <input type="text" name="inputUser" id="inputUser" onclick="validarCampo('inputUser','obrigatorioUser')" >
+                    <p id="obrigatorioUser"></p>
+                </div>                       
+                <div>
+                    <label for="inputEmail"> E-mail </label>
+                    <input type="email" name="inputEmail" id="inputEmail" onclick="validarCampo('inputEmail','obrigatorioEmail')">
+                    <p id="obrigatorioEmail"></p>
+                </div>
+                <div>
+                    <label for="inputSenha"> Senha </label>
+                    <input type="password" name="inputSenha" id="inputSenha" onclick="validarCampo('inputSenha','obrigatorioSenha')">
+                    <p id="obrigatorioSenha"></p>
+                </div>                
+            </form>                                            
+                 <div id="botao-modal">
+                    <a class="botao-cancelar" href="#" onclick="fecharModalCadastro()"> Cancelar </a>
+                    <button class="salvar" onclick="salvarCadastro()"> Salvar </button>
+                 </div>                       
+        </div> <!-- End conteúdo modal -->
+    </div>    <!--End bloco modal Cadastro->
+
+  ----------------------MODAL LOGIN-------------------- -->
+
+  <div id="modal3" class="bloco-modal-login">
+    <div class="conteudo-modal">                  
+        <form id="form-login">
+            <div>
+                <h4 >Gerenciador de Tarefas</h4>
+                <h6>Digite seu login e senha</h6>
+                <input type="text" name="inputUserEntrar" placeholder = "Login" id="inputUserEntrar" onclick="validarCampo('inputUserEntrar','obrigatorioUserEntrar')" >
+                <p id="obrigatorioUserEntrar"></p>
+            </div>        
+            <div>
+                <input type="password" name="inputSenhaEntrar" id="inputSenhaEntrar" placeholder="Senha" onclick="validarCampo('inputSenhaEntrar','obrigatorioSenhaEntrar')">
+                <p id="obrigatorioSenhaEntrar"></p>
+            </div>  
+               <p> Não tem cadastro? <a href="#" onclick="abrirModalCadastro()"> Cadastre-se </a> </p>              
+        </form>                                            
+            <div id="botao-modal-login">
+                <!-- <a class="botao-cancelar" href="#" onclick="fecharModalLogin()"> Cancelar </a>                   -->
+                <button type="button" class="btn btn-secondary btn-lg   btn-entrar" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Right popover" onclick="validarLogin()"> Entrar    
+                </button>                                        
+            </div>                       
+    </div> <!-- End conteúdo modal -->
+  </div>    <!--End bloco modal Login-->
+
+
+    <div id="container-table">
+        <table>
+            <thead>
+                <tr>
+                    <th class="th-titulo" onclick="ordenacao('numero',`${ord}`)">Núm 
+                        <i class="fa-solid fa-caret-up seta-table"></i> 
+                        <i class="fa-solid fa-caret-down seta-table"></i>
+                    </th>
+                    <th class="th-titulo" onclick="ordenacao('descricao',`${ord}`)">Descrição
+                        <i class="fa-solid fa-caret-up seta-table"></i> 
+                        <i class="fa-solid fa-caret-down seta-table"></i>
+                    </th>
+                    <th class="th-titulo" onclick="ordenacao('data',`${ord}`)">Data de entrega
+                        <i class="fa-solid fa-caret-up seta-table"></i> 
+                        <i class="fa-solid fa-caret-down seta-table"></i>
+                    </th>
+                    <th class="th-titulo" onclick="ordenacao('status',`${ord}`)">Status
+                        <i class="fa-solid fa-caret-up seta-table"></i> 
+                        <i class="fa-solid fa-caret-down seta-table"></i>
+                    </th>
+                    <th>Ação</th>
+                </tr>                   
+            </thead>
+            <tbody id="corpo-tabela" > </tbody>
+        </table>                
+    </div> 
+</div> <!--End MENU -->
+    
+
+    <div id="grupo-avancar" class="container text-center">
+    <div class="row p-3"> 
+
+        <div class="col-4 col-sm-7">
+            <span id="paginas">Página</span>
+        </div>      
+
+        <div class="col-8 col-sm-5">
+           <span id="anterior" class="paginacao" onclick="anterior()">  << Anterior</span> &ensp; 
+           <span id="proximo" class="paginacao" onclick="proximo()" > Próximo >></span>            
+        </div>     
+    </div> 
+ </main>    
+   <script src="assets/JS/script.js"></script> 
+</body>
+</html>
